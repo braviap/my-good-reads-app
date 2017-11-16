@@ -1,5 +1,5 @@
-import { ReadFormComponent } from './read-form/read-form.component';
-import { HomeComponent } from './home/home.component';
+import { ReadFormComponent } from './components/read-form/read-form.component';
+import { HomeComponent } from './components/home/home.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [

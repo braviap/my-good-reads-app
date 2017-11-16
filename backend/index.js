@@ -16,15 +16,17 @@ let uniqueId = 1;
 let reads = [
     {
         title: 'Refactoring',
-        link: 'https://martinfowler.com/books/refactoring.html',
+        url: 'https://martinfowler.com/books/refactoring.html',
         category: 'book',
+        description: 'Techinques to refactor your code',
         isRead: false,
         id: uniqueId++
     },
     {
         title: 'Functional Programming',
-        link: 'https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming',
+        url: 'https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming',
         category: 'blog',
+        description: 'Practical introduction to functional programming',
         isRead: true,
         id: uniqueId++
     }
@@ -35,9 +37,10 @@ app.post('/api/create', function (req, res) {
     console.log(req.body);
     let newRead = {
         title: req.body.title,
-        link: req.body.link,
+        url: req.body.url,
         category: req.body.category,
         isRead: req.body.isRead,
+        description: req.body.description,
         id: uniqueId++
     }
     reads.push(newRead);
@@ -53,9 +56,10 @@ app.put('/api/update', function (req, res) {
     const uniqueId = req.body.id;
     let objectToBeEdited = reads.find((read) => read.id === uniqueId);
     objectToBeEdited.title = req.body.title;
-    objectToBeEdited.link = req.body.link;
-    objectToBeEdited.category =  req.body.category;
-    objectToBeEdited.isRead =  req.body.isRead;
+    objectToBeEdited.description = req.body.description;
+    objectToBeEdited.url = req.body.url;
+    objectToBeEdited.category = req.body.category;
+    objectToBeEdited.isRead = req.body.isRead;
     res.json(objectToBeEdited);
 })
 
