@@ -18,16 +18,16 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleItemRead(read: GoodRead) {
-    this.subscriptions = this.backendService.markItem(read)
+  toggleItemRead(id: number, isRead: boolean) {
+    this.subscriptions = this.backendService.markItem(id, isRead)
     .subscribe(() => {
-      console.log(`Item marked as ${read.isRead ? 'read' : 'unread'}`);
+      console.log(`Item marked as ${isRead ? 'read' : 'unread'}`);
     });
   }
 
   editItem(read: GoodRead) {
     console.log('item to be edited');
-    // this.router.navigate()
+    this.router.navigate([`/edit/${read.id}`]);
   }
 
   ngOnDestroy() {

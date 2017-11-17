@@ -10,7 +10,7 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">
-            <a href="{{readItem.url}}">{{readItem.title}}</a>
+            <a target=”_blank” href="{{readItem.url}}">{{readItem.title}}</a>
           </h4>
           <div class="delete">
             <span>
@@ -23,7 +23,7 @@
           </div>
           <p class="card-text">{{readItem.description}}</p>
           <div class="operation">
-            <button (click)="toggleItemRead(readItem)"
+            <button (click)="toggleItemRead(readItem.id, !readItem.isRead)"
               class="btn btn-sm">
               <i class="fa" [ngClass]="{'fa-square-o': !readItem.isRead, 'fa-check-square-o': readItem.isRead}"
                 aria-hidden="true"></i>

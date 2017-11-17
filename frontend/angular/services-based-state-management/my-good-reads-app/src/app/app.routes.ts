@@ -15,5 +15,9 @@ export const routes: Routes = [
     {
         path: 'new',
         component: ReadFormComponent
+    },
+    {
+        path: 'edit/:id',
+        component: ReadFormComponent
     }
 ]

@@ -23,3 +23,7 @@
 .operation > button:hover {
     cursor: pointer;
 }
+
+.card {
+    margin-top: 10px;
+}
