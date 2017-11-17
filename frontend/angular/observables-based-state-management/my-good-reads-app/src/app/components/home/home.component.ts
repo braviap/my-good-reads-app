@@ -7,8 +7,7 @@ import { GoodRead } from '../../core/models/good-read.model';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 

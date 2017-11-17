@@ -13,11 +13,13 @@ export class BackendService {
   baseAPIRURL = 'http://localhost:3000/api';
   private readsSubject: BehaviorSubject<GoodRead[]>;
   public allReads$: Observable<GoodRead[]>;
+  public readsCounter$: Observable<number>;
 
   subs: Subscription;
   constructor(private http: HttpClient) {
     this.readsSubject = new BehaviorSubject([]);
     this.allReads$ = this.readsSubject.asObservable();
+    this.readsCounter$ = this.allReads$.map((arr: GoodRead[]) => arr.filter(read => read.isRead).length);
   }
 
   fetchAllReads() {
