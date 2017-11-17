@@ -13,8 +13,8 @@
               class="btn btn-sm btn-danger">Delete</a></span>
           </h4>
           <p class="card-text">{{readItem.description}}</p>
-          <a href="#"
-            class="btn btn-primary">Mark as Read</a>
+          <button (click)="markItemAsRead(readItem)"
+            class="btn btn-primary">Mark as Read</button>
         </div>
       </div>
     </div>
