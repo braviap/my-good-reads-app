@@ -12,7 +12,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-let uniqueId = 1;
+let uniqueId = 0;
 let reads = [
     {
         title: 'Refactoring',
@@ -28,6 +28,38 @@ let reads = [
         category: 'Blog',
         description: 'Practical introduction to functional programming',
         isRead: true,
+        id: uniqueId++
+    },
+    {
+        title: 'No SQL Distilled',
+        url: 'https://martinfowler.com/books/nosql.html',
+        category: 'Book',
+        description: 'A brief guide to emerging world of polygot persistence',
+        isRead: false,
+        id: uniqueId++
+    },
+    {
+        title: 'Redux',
+        url: 'https://code-cartoons.com/a-cartoon-intro-to-redux-3afb775501a6',
+        category: 'Blog',
+        description: 'A Cartoon introduction to Redux',
+        isRead: true,
+        id: uniqueId++
+    },
+    {
+        title: 'Head First Design Patterns',
+        url: 'http://shop.oreilly.com/product/9780596007126.do',
+        category: 'Book',
+        description: 'Your Brain on Design Patterns',
+        isRead: true,
+        id: uniqueId++
+    },
+    {
+        title: 'Game Programming Patterns',
+        url: 'http://gameprogrammingpatterns.com/contents.html',
+        category: 'Blog',
+        description: 'Design Patterns for Game development',
+        isRead: false,
         id: uniqueId++
     }
 ];
@@ -73,7 +105,7 @@ app.put('/api/update', function (req, res) {
 
 /**Delete data */
 app.delete('/api/delete/:id', function (req, res) {
-    const indexToBeDeleted = reads.findIndex((read) => read.id === req.params.id);
+    const indexToBeDeleted = reads.findIndex((read) => read.id === +req.params.id);
     reads.splice(indexToBeDeleted, 1);
     res.json(req.params.id);
 })

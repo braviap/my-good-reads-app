@@ -13,27 +13,34 @@ export class HomeComponent implements OnInit {
 
   subscriptions: Subscription;
 
-  constructor(public backendService: BackendService, private router: Router) { }
+  constructor(public backendService: BackendService, private router: Router) {
+    this.subscriptions = new Subscription();
+  }
 
   ngOnInit() {
   }
 
   toggleItemRead(id: number, isRead: boolean) {
     this.subscriptions = this.backendService.markItem(id, isRead)
-    .subscribe(() => {
-      console.log(`Item marked as ${isRead ? 'read' : 'unread'}`);
-    });
+      .subscribe(() => {
+        console.log(`Item marked as ${isRead ? 'read' : 'unread'}`);
+      });
   }
 
   editItem(read: GoodRead) {
-    console.log('item to be edited');
     this.router.navigate([`/edit/${read.id}`]);
   }
 
+  deleteItem(id: number) {
+    const subs = this.backendService.deleteItem(id)
+      .subscribe(() => {
+        console.log('Item Deleted successfully');
+      });
+    this.subscriptions.add(subs);
+  }
+
   ngOnDestroy() {
-    if (this.subscriptions) {
-      this.subscriptions.unsubscribe();
-    }
+    this.subscriptions.unsubscribe();
   }
 
 }

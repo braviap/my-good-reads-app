@@ -47,6 +47,15 @@ export class BackendService {
       })
   }
 
+  deleteItem(id: number) {
+    const url = `${this.baseAPIRURL}/delete/${id}`;
+    return this.http.delete(url)
+    .do(rsp => {
+      const indexToBeDeleted = this.reads.findIndex((read) => read.id === id);
+      this.reads.splice(indexToBeDeleted, 1);
+    })
+  }
+
   editItem(read: GoodRead) {
     const url = `${this.baseAPIRURL}/update`;
     // Taking a copy here as updating in the original object
