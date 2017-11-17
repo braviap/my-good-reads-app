@@ -32,16 +32,16 @@ export class BackendService {
 
   }
 
-  markAsRead(read: GoodRead) {
+  markItem(read: GoodRead) {
     const url = `${this.baseAPIRURL}/update`;
     // Taking a copy here as updating in the original object
     // would lead to inconsistencies in behavior in case of any error response from the server
     // 
     const readCopy = Object.assign({}, read);
-    readCopy.isRead = true;
+    readCopy.isRead = !readCopy.isRead;
     return this.http.put<GoodRead>(url, readCopy)
     .do(rsp => {
-      read.isRead = true;
+      read.isRead = !read.isRead;
     })
   }
 

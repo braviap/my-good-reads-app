@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { BackendService } from './../../core/services/backend.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,16 +13,21 @@ export class HomeComponent implements OnInit {
 
   subscriptions: Subscription;
 
-  constructor(public backendService: BackendService) { }
+  constructor(public backendService: BackendService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  markItemAsRead(read: GoodRead) {
-    this.subscriptions = this.backendService.markAsRead(read)
+  toggleItemRead(read: GoodRead) {
+    this.subscriptions = this.backendService.markItem(read)
     .subscribe(() => {
-      console.log('Item marked as read');
+      console.log(`Item marked as ${read.isRead ? 'read' : 'unread'}`);
     });
+  }
+
+  editItem(read: GoodRead) {
+    console.log('item to be edited');
+    // this.router.navigate()
   }
 
   ngOnDestroy() {
