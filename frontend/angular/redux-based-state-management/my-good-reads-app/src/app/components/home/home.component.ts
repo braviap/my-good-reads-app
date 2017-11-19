@@ -1,4 +1,4 @@
-import { selectAllReads } from './../../reducers/good-reads.selector';
+// import { selectAllReads } from './../../reducers/good-reads.selector';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
@@ -24,7 +24,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.allReads$ = this.store.select(selectAllReads);
+    // this.allReads$ = this.store.select(selectAllReads);
+    this.allReads$ = this.store.select((state: AppState) => state.readsCollection)
   }
 
   toggleItemRead(id: number, isRead: boolean) {

@@ -1,5 +1,11 @@
+import { GoodRead } from './core/models/good-read.model';
 import { GoodReadState } from './reducers/good-reads.state';
 
+// export interface AppState {
+//     goodReads: GoodReadState
+// }
+
 export interface AppState {
-    goodReads: GoodReadState
+    readsCollection: GoodRead[];
+    operationMsg: string;
 }

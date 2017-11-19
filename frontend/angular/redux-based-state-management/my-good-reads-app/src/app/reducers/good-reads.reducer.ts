@@ -1,10 +1,16 @@
 import { GoodReadActions } from './../actions/good-reads-actions';
-import { GoodReadState, initialState } from './good-reads.state';
+// import { GoodReadState, initialState } from './good-reads.state';
 import { Action } from '@ngrx/store';
 import * as _ from 'lodash';
+import { AppState } from '../app.state';
 
-export const reducer = (state: GoodReadState = initialState, { type, payload }: Action) => {
-    let newState: GoodReadState;
+export const initialState: AppState =  {
+    readsCollection: null,
+    operationMsg: null
+}
+
+export const reducer = (state: AppState = initialState, { type, payload }: Action) => {
+    let newState: AppState;
     let findIndexToReplace;
     switch (type) {
         case GoodReadActions.FETCH_ALL_READS_SUCCESS:

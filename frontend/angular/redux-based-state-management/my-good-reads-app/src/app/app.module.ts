@@ -1,3 +1,4 @@
+import { reducer } from './reducers/good-reads.reducer';
 import { GoodReadActions } from './actions/good-reads-actions';
 import { GoodReadEffects } from './effects/good-reads.effects';
 import { BackendService } from './core/services/backend.service';
@@ -14,7 +15,7 @@ import { ReadFormComponent } from './components/read-form/read-form.component';
 
 import { routes } from './app.routes';
 import { StoreModule } from '@ngrx/store';
-import { reducer } from './app.reducer';
+// import { reducer } from './app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
