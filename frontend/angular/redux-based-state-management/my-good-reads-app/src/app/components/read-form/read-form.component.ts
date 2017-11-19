@@ -26,13 +26,13 @@ export class ReadFormComponent implements OnInit {
       .subscribe((params) => {
         const selectedReadItemId = +params.get('id');
         if (selectedReadItemId) {
-          this.itemToBeEdited = this.apiService.getReadItem(selectedReadItemId);
-          this.myForm = this.formBuilder.group({
-            'title': [this.itemToBeEdited.title, Validators.required],
-            'description': [this.itemToBeEdited.description, Validators.required],
-            'url': [this.itemToBeEdited.url, Validators.required],
-            'category': [this.itemToBeEdited.category, Validators.required]
-          })
+          // this.itemToBeEdited = this.apiService.getReadItem(selectedReadItemId);
+          // this.myForm = this.formBuilder.group({
+          //   'title': [this.itemToBeEdited.title, Validators.required],
+          //   'description': [this.itemToBeEdited.description, Validators.required],
+          //   'url': [this.itemToBeEdited.url, Validators.required],
+          //   'category': [this.itemToBeEdited.category, Validators.required]
+          // })
         } else {
           this.myForm = this.formBuilder.group({
             'title': ['', Validators.required],

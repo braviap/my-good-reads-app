@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 
 export const reducer = (state: GoodReadState = initialState, { type, payload }: Action) => {
     let newState: GoodReadState;
+    let findIndexToReplace;
     switch (type) {
         case GoodReadActions.FETCH_ALL_READS_SUCCESS:
             newState = _.cloneDeep(state);
@@ -18,13 +19,24 @@ export const reducer = (state: GoodReadState = initialState, { type, payload }: 
             newState = _.cloneDeep(state);
             newState.readsCollection.push(payload);
             break;
-        case GoodReadActions.ADD_NEW_READ_SUCCESS:
+        case GoodReadActions.EDIT_READ_SUCCESS:
             newState = _.cloneDeep(state);
-            newState.readsCollection.push(payload);
+            findIndexToReplace = _.findIndex(newState.readsCollection, (read) => read.id === payload.id);
+            newState[findIndexToReplace] = payload;
+            break;
+        case GoodReadActions.MARK_AS_READ_SUCCESS:
+            newState = _.cloneDeep(state);
+            findIndexToReplace = _.findIndex(newState.readsCollection, (read) => read.id === payload.id);
+            newState[findIndexToReplace] = payload;
+            break;
+        case GoodReadActions.MARK_AS_UNREAD_SUCCESS:
+            newState = _.cloneDeep(state);
+            findIndexToReplace = _.findIndex(newState.readsCollection, (read) => read.id === payload.id);
+            newState[findIndexToReplace] = payload;
             break;
         default:
             newState = state;
 
     }
-    return state;
+    return newState;
 }
