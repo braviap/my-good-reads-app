@@ -43,6 +43,12 @@ export class HomeComponent implements OnInit {
     console.log('Deleting not working still');
   }
 
+  createNewItem() {
+    this.store.dispatch(this.goodReadActions.loadNewRead());
+    this.router.navigate(['/new']);
+    
+  }
+
   ngOnDestroy() {
   }
 

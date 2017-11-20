@@ -27,6 +27,7 @@ export class GoodReadActions {
     static DELETE_READ_FAILURE = 'DELETE_READ_FAILURE';
 
     static LOAD_READ = 'LOAD_READ';
+    static LOAD_NEW_READ = 'LOAD_NEW_READ';
 
     fetchAllReads(): Action {
         return {
@@ -52,6 +53,12 @@ export class GoodReadActions {
         return {
             type: GoodReadActions.LOAD_READ,
             payload: data
+        }
+    }
+
+    loadNewRead(): Action {
+        return {
+            type: GoodReadActions.LOAD_NEW_READ,
         }
     }
 

@@ -10,7 +10,7 @@ export const initialState: AppState =  {
     selectedRead: null
 }
 
-export const reducer = (state: AppState = initialState, { type, payload }: Action) => {
+export function reducer(state: AppState = initialState, { type, payload }: Action) {
     let newState: AppState;
     let findIndexToReplace;
     switch (type) {
@@ -21,6 +21,10 @@ export const reducer = (state: AppState = initialState, { type, payload }: Actio
         case GoodReadActions.FETCH_ALL_READS_FAILURE:
             newState = state;
             newState.operationMsg = 'Fetching reads from backend failed';
+            break;
+        case GoodReadActions.LOAD_NEW_READ:
+            newState = state;
+            newState.selectedRead = null;
             break;
         case GoodReadActions.ADD_NEW_READ_SUCCESS:
             newState = _.cloneDeep(state);
