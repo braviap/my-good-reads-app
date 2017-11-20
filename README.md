@@ -1,5 +1,5 @@
 ## My Good Reads App
-This app is to manage a collection of my set of good reads. The main objective of this app is to exhibit the different ways to manage state in a front end application. The app uses a simple node/express based backend. The front end is built on Angular(4+) and showcases 3 different ways to manage state:
+ The main objective of this app is to exhibit the different ways in which we can manage state in a front end application. The app uses a simple node/express based backend. The front end is built on Angular(4+) and showcases 3 different ways to manage state:
 
 *   Through Angular Services
 *   Through Observables powered by RxJS
@@ -11,13 +11,13 @@ This app is to manage a collection of my set of good reads. The main objective o
 ### To install
     git clone <repo>
     cd backend && npm install
-    cd <specific state management director>/my-good-reads-app && npm install
+    cd <specific state management directory>/my-good-reads-app && npm install
 
 ### To start backend
     cd backend && npm start
 
 ### To start frontend
-    cd <specific state management directory> && ng serve
+    cd <specific state management directory>/my-good-reads-app && ng serve
 
 
 ## Future work
