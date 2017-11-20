@@ -20,14 +20,16 @@ export class BackendService {
 
   addNewRead(read: GoodRead) {
     const url = `${this.baseAPIRURL}/create`
-    return this.http.post(url, read);
+    return this.http.post(url, read)
+    .map(res => res.json());
   }
 
   markItem(id: number, isRead: boolean) {
     const url = `${this.baseAPIRURL}/update/${id}`;
     return this.http.patch(url, {
       isRead
-    });
+    })
+    .map(res => res.json());
   }
 
   deleteItem(id: number) {
@@ -37,7 +39,8 @@ export class BackendService {
 
   editItem(read: GoodRead) {
     const url = `${this.baseAPIRURL}/update`;
-    return this.http.put(url, read);
+    return this.http.put(url, read)
+    .map(res => res.json());
   }
 
 }

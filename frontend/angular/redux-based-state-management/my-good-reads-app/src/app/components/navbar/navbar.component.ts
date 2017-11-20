@@ -15,8 +15,7 @@ import 'rxjs/add/operator/skipWhile';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public backendService: BackendService,
-  private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) { }
   readCounter$: Observable<number>;
 
   ngOnInit() {

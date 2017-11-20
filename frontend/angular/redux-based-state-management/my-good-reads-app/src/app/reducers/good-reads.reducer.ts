@@ -6,7 +6,8 @@ import { AppState } from '../app.state';
 
 export const initialState: AppState =  {
     readsCollection: null,
-    operationMsg: null
+    operationMsg: null,
+    selectedRead: null
 }
 
 export const reducer = (state: AppState = initialState, { type, payload }: Action) => {
@@ -24,21 +25,26 @@ export const reducer = (state: AppState = initialState, { type, payload }: Actio
         case GoodReadActions.ADD_NEW_READ_SUCCESS:
             newState = _.cloneDeep(state);
             newState.readsCollection.push(payload);
+            newState.selectedRead = null;
+            break;
+        case GoodReadActions.LOAD_READ:
+            newState = _.cloneDeep(state);
+            newState.selectedRead = _.cloneDeep(payload);
             break;
         case GoodReadActions.EDIT_READ_SUCCESS:
             newState = _.cloneDeep(state);
             findIndexToReplace = _.findIndex(newState.readsCollection, (read) => read.id === payload.id);
-            newState[findIndexToReplace] = payload;
+            newState.readsCollection[findIndexToReplace] = payload;
             break;
         case GoodReadActions.MARK_AS_READ_SUCCESS:
             newState = _.cloneDeep(state);
             findIndexToReplace = _.findIndex(newState.readsCollection, (read) => read.id === payload.id);
-            newState[findIndexToReplace] = payload;
+            newState.readsCollection[findIndexToReplace] = payload;
             break;
         case GoodReadActions.MARK_AS_UNREAD_SUCCESS:
             newState = _.cloneDeep(state);
             findIndexToReplace = _.findIndex(newState.readsCollection, (read) => read.id === payload.id);
-            newState[findIndexToReplace] = payload;
+            newState.readsCollection[findIndexToReplace] = payload;
             break;
         default:
             newState = state;

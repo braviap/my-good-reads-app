@@ -1,12 +1,11 @@
 // import { selectAllReads } from './../../reducers/good-reads.selector';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
-import { BackendService } from './../../core/services/backend.service';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { GoodRead } from '../../core/models/good-read.model';
 import { Observable } from 'rxjs/Observable';
 import { AppState } from '../../app.state';
+import { GoodReadActions } from '../../actions/good-reads-actions';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +14,10 @@ import { AppState } from '../../app.state';
 })
 export class HomeComponent implements OnInit {
 
-  subscriptions: Subscription;
   allReads$: Observable<GoodRead[]>;
 
-  constructor(public backendService: BackendService, private router: Router,
-  private store: Store<AppState>) {
-    this.subscriptions = new Subscription();
+  constructor( private router: Router,
+  private store: Store<AppState>, private goodReadActions: GoodReadActions) {
   }
 
   ngOnInit() {
@@ -29,26 +26,24 @@ export class HomeComponent implements OnInit {
   }
 
   toggleItemRead(id: number, isRead: boolean) {
-    this.subscriptions = this.backendService.markItem(id, isRead)
-      .subscribe(() => {
-        console.log(`Item marked as ${isRead ? 'read' : 'unread'}`);
-      });
+    if (isRead) {
+      this.store.dispatch(this.goodReadActions.markAsRead(id))
+    } else {
+      this.store.dispatch(this.goodReadActions.markAsUnread(id))
+    }
   }
 
   editItem(read: GoodRead) {
+    this.store.dispatch(this.goodReadActions.loadRead(read))
     this.router.navigate([`/edit/${read.id}`]);
   }
 
   deleteItem(id: number) {
-    const subs = this.backendService.deleteItem(id)
-      .subscribe(() => {
-        console.log('Item Deleted successfully');
-      });
-    this.subscriptions.add(subs);
+    // To implement
+    console.log('Deleting not working still');
   }
 
   ngOnDestroy() {
-    this.subscriptions.unsubscribe();
   }
 
 }

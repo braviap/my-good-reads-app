@@ -7,5 +7,6 @@ import { GoodReadState } from './reducers/good-reads.state';
 
 export interface AppState {
     readsCollection: GoodRead[];
+    selectedRead: GoodRead;
     operationMsg: string;
 }
