@@ -32,7 +32,7 @@ export function reducer(state: AppState = initialState, { type, payload }: Actio
             newState.selectedRead = null;
             break;
         case GoodReadActions.LOAD_READ:
-            newState = _.cloneDeep(state);
+            newState = state;
             newState.selectedRead = _.cloneDeep(payload);
             break;
         case GoodReadActions.EDIT_READ_SUCCESS:

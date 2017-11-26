@@ -20,7 +20,7 @@
     cd <specific state management directory>/my-good-reads-app && ng serve
 
 
-## Future work
+## Todo
 * Implementing Mobx Based State Management
 * Implementing React based front end with Redux for State Management
 * Implementing Vue based front end with Vuex for State Management
