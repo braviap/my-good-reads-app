@@ -1,3 +1,8 @@
-ul > li {
-    margin-left: 75vw;
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+span {
+    white-space: nowrap;
 }
