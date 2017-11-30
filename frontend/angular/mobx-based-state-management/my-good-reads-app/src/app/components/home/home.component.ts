@@ -22,10 +22,7 @@ export class HomeComponent implements OnInit {
   }
 
   toggleItemRead(id: number, isRead: boolean) {
-    // this.subscriptions = this.backendService.markItem(id, isRead)
-    //   .subscribe(() => {
-    //     console.log(`Item marked as ${isRead ? 'read' : 'unread'}`);
-    //   });
+    this.store.toggleItemRead(id, isRead);
   }
 
   editItem(read: GoodRead) {
@@ -33,11 +30,7 @@ export class HomeComponent implements OnInit {
   }
 
   deleteItem(id: number) {
-    // const subs = this.backendService.deleteItem(id)
-    //   .subscribe(() => {
-    //     console.log('Item Deleted successfully');
-    //   });
-    // this.subscriptions.add(subs);
+    this.store.deleteRead(id);
   }
 
   ngOnDestroy() {
