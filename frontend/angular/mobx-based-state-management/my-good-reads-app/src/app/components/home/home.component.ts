@@ -1,6 +1,6 @@
+import { GoodReadStore } from './../../core/store/reads.store';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { BackendService } from './../../core/services/backend.service';
 import { Component, OnInit } from '@angular/core';
 import { GoodRead } from '../../core/models/good-read.model';
 
@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   subscriptions: Subscription;
 
-  constructor(public backendService: BackendService, private router: Router) {
+  constructor(public store: GoodReadStore, private router: Router) {
     this.subscriptions = new Subscription();
   }
 
@@ -21,10 +21,10 @@ export class HomeComponent implements OnInit {
   }
 
   toggleItemRead(id: number, isRead: boolean) {
-    this.subscriptions = this.backendService.markItem(id, isRead)
-      .subscribe(() => {
-        console.log(`Item marked as ${isRead ? 'read' : 'unread'}`);
-      });
+    // this.subscriptions = this.backendService.markItem(id, isRead)
+    //   .subscribe(() => {
+    //     console.log(`Item marked as ${isRead ? 'read' : 'unread'}`);
+    //   });
   }
 
   editItem(read: GoodRead) {
@@ -32,11 +32,11 @@ export class HomeComponent implements OnInit {
   }
 
   deleteItem(id: number) {
-    const subs = this.backendService.deleteItem(id)
-      .subscribe(() => {
-        console.log('Item Deleted successfully');
-      });
-    this.subscriptions.add(subs);
+    // const subs = this.backendService.deleteItem(id)
+    //   .subscribe(() => {
+    //     console.log('Item Deleted successfully');
+    //   });
+    // this.subscriptions.add(subs);
   }
 
   ngOnDestroy() {

@@ -11,7 +11,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ReadFormComponent } from './components/read-form/read-form.component';
 
 import { routes } from './app.routes';
-
+import { GoodReadStore } from './core/store/reads.store';
+import { MobxAngularModule } from 'mobx-angular';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,10 @@ import { routes } from './app.routes';
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MobxAngularModule
   ],
-  providers: [BackendService],
+  providers: [BackendService, GoodReadStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

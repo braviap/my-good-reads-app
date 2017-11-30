@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../core/services/backend.service';
+import { GoodReadStore } from '../../core/store/reads.store';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +8,7 @@ import { BackendService } from '../../core/services/backend.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public backendService: BackendService) { }
+  constructor(public store: GoodReadStore) { }
 
   ngOnInit() {
   }

@@ -1,5 +1,6 @@
 import { BackendService } from './core/services/backend.service';
 import { Component, OnInit } from '@angular/core';
+import { GoodReadStore } from './core/store/reads.store';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit{ 
   title = 'app';
-  constructor(private backendService: BackendService) {}
+  constructor(private store: GoodReadStore) {}
 
   ngOnInit() {
-    this.backendService.fetchAllReads();
+    this.store.loadAllReads();
   }
 }
