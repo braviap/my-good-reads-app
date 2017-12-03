@@ -28,19 +28,11 @@ export class BackendService {
     return this.http.patch<GoodRead>(url, {
       isRead
     });
-      // .do(rsp => {
-      //   const itemToBeUpdated = this.getReadItem(id);
-      //   itemToBeUpdated.isRead = isRead;
-      // })
   }
 
   deleteItem(id: number) {
     const url = `${this.baseAPIRURL}/delete/${id}`;
     return this.http.delete(url);
-    // .do(rsp => {
-    //   const indexToBeDeleted = this.reads.findIndex((read) => read.id === id);
-    //   this.reads.splice(indexToBeDeleted, 1);
-    // })
   }
 
   editItem(read: GoodRead) {
@@ -50,16 +42,6 @@ export class BackendService {
     // 
     const readCopy = Object.assign({}, read);
     return this.http.put<GoodRead>(url, readCopy);
-      // .do(rsp => {
-      //   // Replace the outdated item in the readlist with the updated one
-      //   const indexToReplace = this.reads.findIndex(item => item.id === read.id);
-      //   this.reads[indexToReplace] = rsp;
-      // })
   }
-
-  // get allReadsCount(): number {
-  //   console.log(`Reading counter at ${Date.now()}`);
-  //   return this.reads.filter(read => read.isRead).length;
-  // }
 
 }
