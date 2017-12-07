@@ -18,7 +18,7 @@ let reads = [
         title: 'Refactoring',
         url: 'https://martinfowler.com/books/refactoring.html',
         category: 'Book',
-        description: 'Techinques to refactor your code',
+        description: 'Improving the Design of Existing Code',
         isRead: false,
         id: uniqueId++
     },
