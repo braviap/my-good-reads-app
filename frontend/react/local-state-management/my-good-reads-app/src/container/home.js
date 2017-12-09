@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { GoodRead } from '../models/good-read';
+import Card from '../components/card/card';
 
 class Home extends Component {
   constructor() {
@@ -8,25 +9,38 @@ class Home extends Component {
       reads: [
         {
           id: 1,
-          title: 'Hello'
+          title: 'Hello',
+          description: 'Wonderful'
         },
         {
           id: 2,
-          title: 'World'
+          title: 'World',
+          description: 'Super Awesome'
+        },
+        {
+          id: 3,
+          title: 'Hello',
+          description: 'Wonderful'
+        },
+        {
+          id: 4,
+          title: 'World',
+          description: 'Super Awesome'
         }
       ]
     };
   }
   render() {
     return (
-      <div className="container">{this.state.reads.map(this.renderEachRead)}</div>
+      <div className="container">
+        <div className="row">{this.state.reads.map(this.renderEachRead)}</div>
+      </div>
     );
   }
   renderEachRead(read: GoodRead) {
     return (
-      <div>
-        <h1>{read.id}</h1>
-        <p>{read.title}</p>
+      <div className="col-sm-4" key={read.id}>
+        <Card readItem={read} />
       </div>
     );
   }
