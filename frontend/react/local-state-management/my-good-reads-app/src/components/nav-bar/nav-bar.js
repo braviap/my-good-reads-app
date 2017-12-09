@@ -1,5 +1,6 @@
 import React from 'react';
 import './nav-bar.css';
+import { Link } from 'react-router-dom';
 
 function NavBar(props) {
   return (
@@ -7,9 +8,9 @@ function NavBar(props) {
       className="navbar navbar-expand-lg navbar-light bg-light"
       id="navbar-content"
     >
-      <a className="navbar-brand" href="#">
+      <Link to="/" className="navbar-brand">
         MyGoodReads
-      </a>
+      </Link>
       <span>React - Local State Management</span>
       <ul className="nav">
         <li className="nav-item">

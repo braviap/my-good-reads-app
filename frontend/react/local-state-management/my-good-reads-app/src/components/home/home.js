@@ -1,12 +1,17 @@
 // @flow
 
 import React from 'react';
-import { GoodRead } from '../models/good-read';
-import Card from '../components/card/card';
+import { GoodRead } from '../../models/good-read';
+import Card from '../card/card';
+import './home.css';
+import { Link } from 'react-router-dom';
 
 function Home(props) {
   return (
     <div className="container">
+      <div class="create">
+        <Link to="/about" class="btn btn-success">+New</Link>
+      </div>
       <div className="row">
         {props.reads.map(renderEachRead.bind(null, props))}
       </div>

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import Home from './container/home';
+import Home from './components/home/home';
 import NavBar from './components/nav-bar/nav-bar';
+import Form from './components/form/form';
 import axios from 'axios';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class App extends Component {
   constructor(props) {
@@ -26,15 +28,26 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <NavBar readCounter={this.state.reads.filter(read => read.isRead).length}/>
-        <Home
-          reads={this.state.reads}
-          onRead={this.markItem}
-          onDelete={this.deleteItem}
-          onEdit={this.editItem}
-        />
-      </div>
+      <Router>
+        <div className="App">
+          <NavBar
+            readCounter={this.state.reads.filter(read => read.isRead).length}
+          />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Home
+                reads={this.state.reads}
+                onRead={this.markItem}
+                onDelete={this.deleteItem}
+                onEdit={this.editItem}
+              />
+            )}
+          />
+          <Route path="/about" component={Form} />
+        </div>
+      </Router>
     );
   }
   deleteItem(id: number) {
@@ -47,17 +60,18 @@ class App extends Component {
     });
   }
   markItem(id: number, isRead: boolean) {
-    axios.patch(`${this.baseURL}/update/${id}`, {
-      isRead
-    })
-    .then(rsp => {
-      // Find the element that needs to be updated
-      const itemToBeUpdated = this.state.reads.find(item => item.id === id);
-      itemToBeUpdated.isRead = isRead;
-      this.setState({
-        reads: this.state.reads
+    axios
+      .patch(`${this.baseURL}/update/${id}`, {
+        isRead
+      })
+      .then(rsp => {
+        // Find the element that needs to be updated
+        const itemToBeUpdated = this.state.reads.find(item => item.id === id);
+        itemToBeUpdated.isRead = isRead;
+        this.setState({
+          reads: this.state.reads
+        });
       });
-    });
   }
   editItem(id: number) {
     console.log('edit Item clicked', id);
