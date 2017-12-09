@@ -24,7 +24,7 @@ function Card(props) {
             onClick={() => props.onRead(props.readItem, true)}
             className="btn btn-sm"
           >
-            <i className="fa fa-square-o" aria-hidden="true" />
+            <i className={`fa ${(props.readItem.isRead ? 'fa-check-square-o' : 'fa-square-o')}`} aria-hidden="true" />
           </button>
           <button
             onClick={() => props.onEdit(props.readItem.id)}
