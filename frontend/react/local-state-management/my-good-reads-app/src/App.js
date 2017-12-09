@@ -46,8 +46,18 @@ class App extends Component {
       });
     });
   }
-  markItem(read: GoodRead, isRead: boolean) {
-    console.log('Item marked as ', isRead);
+  markItem(id: number, isRead: boolean) {
+    axios.patch(`${this.baseURL}/update/${id}`, {
+      isRead
+    })
+    .then(rsp => {
+      // Find the element that needs to be updated
+      const itemToBeUpdated = this.state.reads.find(item => item.id === id);
+      itemToBeUpdated.isRead = isRead;
+      this.setState({
+        reads: this.state.reads
+      });
+    });
   }
   editItem(id: number) {
     console.log('edit Item clicked', id);

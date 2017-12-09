@@ -21,7 +21,7 @@ function Card(props) {
         <p className="card-text">{props.readItem.description}</p>
         <div className="operation">
           <button
-            onClick={() => props.onRead(props.readItem, true)}
+            onClick={() => props.onRead(props.readItem.id, !props.readItem.isRead)}
             className="btn btn-sm"
           >
             <i className={`fa ${(props.readItem.isRead ? 'fa-check-square-o' : 'fa-square-o')}`} aria-hidden="true" />
