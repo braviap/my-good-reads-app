@@ -26,4 +26,4 @@ The slideshare link for a presentation on this could be found [here][slide-share
 * Implementing React based front end with Redux for State Management
 * Implementing Vue based front end with Vuex for State Management
 
-[slide-share]: https://www.slideshare.net/SundararamanVaidyana/state-management-83786649
+[slide-share]: https://www.slideshare.net/SundararamanVaidyana/frontend-state-management
