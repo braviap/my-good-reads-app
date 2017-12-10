@@ -6,6 +6,7 @@
 *   Through Redux powered by ngRx
 *   Through Mobx powered by mobx-angular
 
+The slideshare link for a presentation on this could be found [here][slide-share]
 
 ## Steps to run the app
 
@@ -24,3 +25,5 @@
 ## Todo
 * Implementing React based front end with Redux for State Management
 * Implementing Vue based front end with Vuex for State Management
+
+[slide-share]: https://www.slideshare.net/SundararamanVaidyana/state-management-83786649
