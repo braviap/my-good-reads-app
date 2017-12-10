@@ -45,7 +45,7 @@ class App extends Component {
               />
             )}
           />
-          <Route path="/about" component={Form} />
+          <Route path="/new" component={Form} />
         </div>
       </Router>
     );

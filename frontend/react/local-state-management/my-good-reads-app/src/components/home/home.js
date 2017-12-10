@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom';
 function Home(props) {
   return (
     <div className="container">
-      <div class="create">
-        <Link to="/about" class="btn btn-success">+New</Link>
+      <div className="create">
+        <Link to="/new" className="btn btn-success">+New</Link>
       </div>
       <div className="row">
         {props.reads.map(renderEachRead.bind(null, props))}
