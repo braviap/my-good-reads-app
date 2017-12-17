@@ -13,13 +13,15 @@ import { ReadFormComponent } from './components/read-form/read-form.component';
 import { routes } from './app.routes';
 import { GoodReadStore } from './core/store/reads.store';
 import { MobxAngularModule } from 'mobx-angular';
+import { ReadCardComponent } from './components/read-card/read-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    ReadFormComponent
+    ReadFormComponent,
+    ReadCardComponent
   ],
   imports: [
     BrowserModule,

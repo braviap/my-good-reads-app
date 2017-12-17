@@ -22,13 +22,15 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { createInputTransfer, createNewHosts, removeNgStyles } from '@angularclass/hmr'
 import 'rxjs/add/operator/take'
+import { ReadCardComponent } from './components/read-card/read-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    ReadFormComponent
+    ReadFormComponent,
+    ReadCardComponent
   ],
   imports: [
     BrowserModule,

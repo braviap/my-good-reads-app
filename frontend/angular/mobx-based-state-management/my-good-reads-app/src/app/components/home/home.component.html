@@ -1,4 +1,5 @@
-<div class="container" *mobxAutorun>
+<div class="container"
+  *mobxAutorun>
   <div class="create">
     <!-- <button type="button" class="btn btn-success">+New</button> -->
     <a routerLink="/new"
@@ -7,35 +8,10 @@
   <div class="row">
     <div class="col-sm-4"
       *ngFor="let readItem of store.reads">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">
-            <a target=”_blank”
-              href="{{readItem.url}}">{{readItem.title}}</a>
-          </h4>
-          <div class="delete">
-            <button (click)="deleteItem(readItem.id)"
-              class="btn btn-sm btn-danger">
-              <i class="fa fa-trash-o"
-                aria-hidden="true"></i>
-            </button>
-          </div>
-          <p class="card-text">{{readItem.description}}</p>
-          <div class="operation">
-            <button (click)="toggleItemRead(readItem.id, !readItem.isRead)"
-              class="btn btn-sm">
-              <i class="fa"
-                [ngClass]="{'fa-square-o': !readItem.isRead, 'fa-check-square-o': readItem.isRead}"
-                aria-hidden="true"></i>
-            </button>
-            <button (click)="editItem(readItem)"
-              class="btn btn-sm">
-              <i class="fa fa-pencil-square-o"
-                aria-hidden="true"></i>
-            </button>
-          </div>
-        </div>
-      </div>
+      <app-read-card [readItem]="readItem"
+        (checkEvent)="toggleItemRead(readItem.id, !readItem.isRead)"
+        (deleteEvent)="deleteItem(readItem.id)"
+        (editEvent)="editItem(readItem)"></app-read-card>
     </div>
   </div>
 </div>

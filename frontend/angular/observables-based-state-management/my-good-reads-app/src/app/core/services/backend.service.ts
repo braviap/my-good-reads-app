@@ -37,8 +37,8 @@ export class BackendService {
     return this.http.post<GoodRead>(url, read)
       .do(rsp => {
         const allReads = this.readsSubject.getValue();
-        allReads.push(rsp);
-        this.readsSubject.next(allReads);
+        const newAllReads = [...allReads, rsp];
+        this.readsSubject.next(newAllReads);
       });
   }
 
@@ -49,8 +49,8 @@ export class BackendService {
     })
       .do(rsp => {
         const allReads = this.readsSubject.getValue();
-        const itemToBeUpdated = allReads.find(read => read.id === id);
-        itemToBeUpdated.isRead = isRead;
+        const indexOfItemToBeUpdated = allReads.findIndex(read => read.id === id);
+        allReads[indexOfItemToBeUpdated] = rsp;
         this.readsSubject.next(allReads);
       })
   }

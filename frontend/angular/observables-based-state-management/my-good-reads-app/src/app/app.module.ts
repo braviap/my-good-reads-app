@@ -1,3 +1,4 @@
+import { ReadCardComponent } from './components/read-card/read-card.component';
 import { BackendService } from './core/services/backend.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,7 +19,8 @@ import { routes } from './app.routes';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    ReadFormComponent
+    ReadFormComponent,
+    ReadCardComponent
   ],
   imports: [
     BrowserModule,

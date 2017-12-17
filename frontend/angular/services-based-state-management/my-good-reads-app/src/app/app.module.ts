@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ReadFormComponent } from './components/read-form/read-form.component';
 
 import { routes } from './app.routes';
+import { ReadCardComponent } from './components/read-card/read-card.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { routes } from './app.routes';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    ReadFormComponent
+    ReadFormComponent,
+    ReadCardComponent
   ],
   imports: [
     BrowserModule,
